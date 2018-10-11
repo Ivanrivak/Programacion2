@@ -43,8 +43,6 @@ public class Controlador extends HttpServlet {
 			session.setAttribute("inferior", inferior);
 			session.setAttribute("superior", superior);
 		} catch (NumberFormatException e) {
-			// TODO Auto-generated catch block
-			System.out.println("parametros incorrectos");
 			return 0;
 		}
 		if (inferior > superior)
@@ -116,13 +114,13 @@ public class Controlador extends HttpServlet {
 						rutaJSP = "/juego.jsp";
 						System.out.println("Parametros aceptados");
 						session.setAttribute("numeroAleatorio", numero);
+						System.out.println("numero Aleatorio: "+numero);
 					}
 				} else
 					request.setAttribute("Error", "Parametro/s Incorrecto/s");
 				break;
 			case "adivinar":
 				rutaJSP = "/juego.jsp";
-				System.out.println("intento");
 				Intento jugada = Jugada(request);
 				if (jugada != null)
 					listajuego.add(jugada);
