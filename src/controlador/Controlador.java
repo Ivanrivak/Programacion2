@@ -146,7 +146,7 @@ public class Controlador extends HttpServlet {
 			case "reset":
 				rutaJSP = "/index.jsp";
 				session.removeAttribute("orden");
-				session.removeAttribute("listaJuego");
+				listajuego.clear();
 				session.removeAttribute("final");
 				break;
 			case "cancelar":
