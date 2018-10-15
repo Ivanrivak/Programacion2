@@ -12,11 +12,25 @@
 <body>
 	<h3>Jugando entre <%= session.getAttribute("inferior")%> - <%= session.getAttribute("superior") %> </h3>
 	<hr/>
+<% String finalizar = (String)session.getAttribute("final");
+if( finalizar != "final"){ %>
 	<h5>Escribe el número a adivinar</h5>
 	<form name="adivinar" action="logica" method="POST">
-	<input type="hidden" name="juego" value="adivinar">
+		<input type="hidden" name="juego" value="adivinar">
 		<input type="text" name="adivinar">
 		<input type="submit" value="confirmar">
+	</form>
+	<%} %>
+	<form name="reset" action="logica" method="POST">
+		<input type="hidden" name="juego" value="reset">
+		<input type="submit" value="<% if(finalizar != "final")out.print("Reset");else out.print("Terminar");%>">
+	</form>
+	<%if(finalizar != "final"){ %>
+	<form name="cancelar" action="logica" method="POST">
+		<input type="hidden" name="juego" value="cancelar">
+		<input type="submit" value="cancelar">
+	</form>
+	<%} %>
 	<div>
 		<% Object error = request.getAttribute("Error"); 
 		if(error != null){
